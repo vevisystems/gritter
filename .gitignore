@@ -3,3 +3,4 @@ gritter*.gem
 .bundle
 pkg
 .project
+/.idea
