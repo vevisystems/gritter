@@ -4,7 +4,7 @@ if defined?(Rails::Railtie)
       initializer :gritter do
         Gritter.initialize
       end
-      config.assets.precompile += %w(error.png gritter-close.png gritter.png ie-spacer.gif notice.png progress.gif success.png warning.png)
+      config.assets.precompile += %w(error.svg gritter-close.png gritter.png ie-spacer.gif notice.svg progress.gif success.svg warning.svg)
     end
   end
 end
