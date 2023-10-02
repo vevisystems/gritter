@@ -187,7 +187,7 @@ window.GritterModernizr = function (a, b, c) {
       
       // Assign callbacks
       $(['before_open', 'after_open', 'before_close', 'after_close', 'on_click']).each(function(i, val){
-        Gritter['_' + val + '_' + number] = ($.isFunction(params[val])) ? params[val] : function(){}
+        Gritter['_' + val + '_' + number] = (typeof params[val] === "function") ? params[val] : function(){}
       });
 
       // Reset
@@ -221,7 +221,7 @@ window.GritterModernizr = function (a, b, c) {
       }
 
       // Add on_click listener
-      $(item).click(function(){
+      $(item).on('click', function(){
         Gritter['_' + 'on_click' + '_' + number]($(this));
       });
     
@@ -230,7 +230,7 @@ window.GritterModernizr = function (a, b, c) {
          *  Disable on_click event when hover over close button
          *  Enable on_click event on mouse leave
       */
-      $(item).find('.gritter-close').bind('mouseenter mouseleave', function(event){
+      $(item).find('.gritter-close').on('mouseenter mouseleave', function(event){
         if(event.type == 'mouseenter'){
           $(item).off("click");
         }
@@ -242,7 +242,7 @@ window.GritterModernizr = function (a, b, c) {
       });
       
       // Bind the hover/unhover states
-      $(item).bind('mouseenter mouseleave', function(event){
+      $(item).on('mouseenter mouseleave', function(event){
         if(event.type == 'mouseenter'){
           if(!sticky){ 
             Gritter._restoreItemIfFading($(this), number);
@@ -299,7 +299,7 @@ window.GritterModernizr = function (a, b, c) {
       
       // If this is true, then we are coming from clicking the (X)
       if(unbind_events){
-        e.unbind('mouseenter mouseleave');
+        e.off('mouseenter mouseleave');
       }
       
       // Fade it out or remove it
@@ -424,8 +424,8 @@ window.GritterModernizr = function (a, b, c) {
     stop: function(params){
       
       // callbacks (if passed)
-      var before_close = ($.isFunction(params.before_close)) ? params.before_close : function(){};
-      var after_close = ($.isFunction(params.after_close)) ? params.after_close : function(){};
+      var before_close = (typeof params.before_close === "function") ? params.before_close : function(){};
+      var after_close = (typeof params.after_close === "function") ? params.after_close : function(){};
       
       var wrap = $('#gritter-notice-wrapper');
       before_close(wrap);
