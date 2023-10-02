@@ -1,3 +1,3 @@
 module Gritter
-  VERSION = "1.2.0v1"
+  VERSION = "1.2.0v2"
 end
