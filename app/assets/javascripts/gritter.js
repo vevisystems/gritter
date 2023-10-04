@@ -235,7 +235,7 @@ window.GritterModernizr = function (a, b, c) {
           $(item).off("click");
         }
         else {
-          $(item).on("click",function(){
+          $(item).on("click", function(){
             Gritter['_' + 'on_click' + '_' + number]($(this));
           });
         }
@@ -337,7 +337,7 @@ window.GritterModernizr = function (a, b, c) {
         e.find('.gritter-close').show();
         
         // Clicking (X) makes the perdy thing close
-        e.find('.gritter-close').click(function(){
+        e.find('.gritter-close').on('click', function(){
         
           var unique_id = e.attr('id').split('-')[2];
           Gritter.removeSpecific(unique_id, {}, e, true);
